@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Edit Blog Post</title>
+</head>
+<body>
+<div class="container">
+  <a th:href="@{/}">Home</a>
+  <form action="#"
+        th:action="@{'/posts/{id}' (id=${post.id})}"
+        th:object="${post}"
+        method="POST" >
+    <input type="hidden" th:field="*{account}" />
+    <input type="hidden" th:field="*{createdAt}" />
+    <h2>Edit Post</h2>
+
+    <div>
+      <label for="new-post-title">Title</label>
+      <!-- MAPPING ACROSS VALUES ENTERED INTO A DATABASE ENTRY FOR THE POST MODEL-->
+      <input id="new-post-title" type="text" th:field="*{title}" placeholder="Title"/>
+    </div>
+
+    <div>
+      <label for="new-post-body">Body</label>
+      <input id="new-post-body" type="text" th:field="*{body}" placeholder="Body"/>
+    </div>
+
+    <button type="submit">Post!</button>
+
+  </form>
+</div>
+
+</body>
+</html>

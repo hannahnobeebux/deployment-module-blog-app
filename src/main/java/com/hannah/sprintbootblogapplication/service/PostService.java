@@ -31,8 +31,14 @@ public class PostService {
         if (post.getId() == null) {
             post.setCreatedAt(LocalDateTime.now());
         }
-//        post.setUpdatedAt(LocalDateTime.now());
+        //Changing timestamp to when the post was edited
+        post.setUpdatedAt(LocalDateTime.now());
 
         return postRepository.save(post);
+    }
+
+    //won't return anything
+    public void delete(Post post) {
+        postRepository.delete(post);
     }
 }

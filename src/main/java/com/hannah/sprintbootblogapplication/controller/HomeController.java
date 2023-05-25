@@ -20,7 +20,7 @@ public class HomeController {
         //populate this model with the blog posts
         List<Post> posts = postService.getAll();
         model.addAttribute("posts", posts);
-        //we need to define the template as this "home" variable
+        //this is referencing the template with the name "home"
         return "home";
     }
 }
