@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+  <link rel="stylesheet" type="text/css" href="/css/form.css" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Blog :: Login </title>
+  <title>Login </title>
 </head>
 <body>
 <div class="container">
-  <h1>Spring Boot Application</h1>
-  <hr />
-
+  <a th:href="@{'/'}">Home</a>
+  <br />
+  <h1>Please login</h1>
+<hr />
 <!--  DEFINING BOTH A HTML ACTION AND A THYMELEAF ACTION-->
   <form action="#" th:action="@{/login}" method="POST">
 
@@ -18,6 +20,8 @@
       <label for="email">Email</label>
       <input id="email" type="text" name="email" placeholder="Email"/>
     </div>
+
+    <br />
 
     <div class="form-group">
       <label for="password">Password</label>

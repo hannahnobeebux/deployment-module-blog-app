@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Blog :: New Post</title>
+  <title>Create a New Post</title>
 </head>
 <body>
   <div class="container">
@@ -22,11 +23,13 @@
         <!-- MAPPING ACROSS VALUES ENTERED INTO A DATABASE ENTRY FOR THE POST MODEL-->
         <input id="new-post-title" type="text" th:field="*{title}" placeholder="Title"/>
       </div>
-
+<br />
       <div>
         <label for="new-post-body">Body</label>
         <input id="new-post-body" type="text" th:field="*{body}" placeholder="Body"/>
       </div>
+
+      <br />
 
       <button type="submit">Post!</button>
 

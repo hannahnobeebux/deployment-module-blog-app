@@ -4,18 +4,54 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 >
 <head>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blog :: Home </title>
+    <title>Home</title>
 </head>
 <body>
+<h1 id="top-header">Socially Speaking</h1>
     <div class="container">
-        <h1>Spring Boot Blog Application</h1>
+
+        <div sec:authorize="isAuthenticated()">
+            <form action="#"
+                  th:action="@{/logout}"
+                  method="POST">
+                <div>
+                    <label class="welcome-username">Welcome, <span sec:authentication="name">Username</span> to Socially Speaking! Create and view your posts below</label>
+                </div>
+                <br />
+                <button type="submit">Logout</button>
+
+
+            </form>
+
+        </div>
+
+        <br />
+
+        <div class="introduction">
+            <h2>Introduction</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc finibus eros ultricies condimentum pharetra. Quisque eu ipsum non mi cursus porta a quis enim. Vestibulum at lacus vel diam vulputate dignissim a vel mi. Praesent fringilla ornare lorem. Aliquam erat volutpat. Nulla et neque pharetra, convallis nulla maximus, aliquet massa. Phasellus blandit justo felis, vitae vestibulum tellus rhoncus in. Nunc erat velit, fermentum eget arcu pharetra, cursus fermentum lectus. Praesent id diam ac nunc viverra hendrerit. Praesent vel ultricies nisl.
+
+                Curabitur sed risus placerat, blandit ex maximus, accumsan augue. Fusce hendrerit diam turpis, nec fringilla leo aliquam sodales. Phasellus laoreet, massa sit amet efficitur vehicula, nisi nulla dictum diam, et eleifend nulla elit ac nunc. Donec tristique ultrices sagittis. Pellentesque eget libero ac elit faucibus eleifend vel quis lectus. Donec feugiat tellus a lectus facilisis, eget posuere lacus mattis. Vivamus vestibulum fringilla bibendum.</p>
+
+        </div>
+
         <hr />
-        <ul>
-            <li><a th:href="@{/posts/new}">Create new post</a></li>
+
+        <ul sec:authorize="!isAuthenticated()">
+            <a th:href="@{/register}">Register</a>
+            <br />
+            <br />
+            <a th:href="@{/login}">Login</a>
         </ul>
+
+        <ul>
+            <a th:href="@{/posts/new}">Create new post</a>
+        </ul>
+
         <div class="posts-container">
             <div class="post" th:each="post : ${posts}">
                 <h2><a th:href="@{'/posts/' + ${post.id}}"th:text="${post.title}">Title</a></h2>
@@ -28,25 +64,14 @@
         </div>
 
         <hr />
-        <ul sec:authorize="!isAuthenticated()">
-            <li><a th:href="@{/register}">Register</a></li>
-            <li><a th:href="@{/login}">Login</a></li>
-        </ul>
-        <div sec:authorize="isAuthenticated()">
-            <form action="#"
-                th:action="@{/logout}"
-                method="POST">
-                <div>
-                    <label>Hi, <span sec:authentication="name">Username</span></label>
-                </div>
 
-                <button type="submit">Logout</button>
 
-            </form>
-
-        </div>
 
     </div>
+
+<footer>
+    <h2 class="footer-title">Thank you for visiting Socially Speaking</h2>
+</footer>
 
 </body>
 </html>

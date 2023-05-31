@@ -31,6 +31,7 @@ public class WebSecurityConfig{
                 //        when not using H2 Console, this can be removed
                 .headers(headers -> headers.frameOptions().disable())
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/**","/css/**", "/js/**", "/images/**", "/fonts/**", "/webjars/**").permitAll()
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/register/**").permitAll()
                         .requestMatchers("/login").permitAll()

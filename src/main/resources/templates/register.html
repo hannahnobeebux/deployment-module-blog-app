@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" type="text/css" href="/css/form.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blog :: Register </title>
+    <title>Register </title>
 </head>
 <body>
 <div class="container">
-    <h1>Spring Boot Application</h1>
+    <a th:href="@{'/'}">Home</a>
+    <br />
+    <h1>Register for your account:</h1>
     <hr />
 
     <form action="#" th:action="@{/register}" th:object="${account}" method="POST">
@@ -17,22 +20,22 @@
             <!--By having a "*" in front of the attribute name, we are mapping this value to the "account" object-->
             <input id="firstname" type="text" th:field="*{firstName}" placeholder="First Name"/>
         </div>
-
+        <br />
         <div>
             <label for="lastname">Last Name</label>
             <input id="lastname" type="text" th:field="*{lastName}" placeholder="Last Name"/>
         </div>
-
+        <br />
         <div>
             <label for="email">Email</label>
             <input id="email" type="text" th:field="*{email}" placeholder="email"/>
         </div>
-
+        <br />
         <div>
             <label for="password">Password</label>
-            <input id="password" type="text" th:field="*{password}" placeholder="Password"/>
+            <input id="password" type="password" th:field="*{password}" placeholder="Password"/>
         </div>
-
+        <br />
         <button type="submit">Register!</button>
 
     </form>
